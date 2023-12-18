@@ -18,13 +18,19 @@ function predict() {
       contentType: false,
       processData: false,
       success: function (response) {
+        let status="error";
+  
         if (response && response.predicted_class !== undefined) {
           var resultMessage;
-  
+
+         
           // Check the predicted class and set the result message accordingly
           if (response.predicted_class === 0) {
             resultMessage =
-              "The image is safe and doesn't contain Backdoor attack.";
+              "The image is safe and doesn't contain any Backdoor attack.";
+
+              status="success";
+
           } else if (response.predicted_class === 1) {
             resultMessage = "This image has Backdoor attack.";
           } else if (response.predicted_class === 2) {
@@ -37,12 +43,13 @@ function predict() {
             resultMessage = "This image has Backdoor attack.";
           } else {
             resultMessage = "Unexpected prediction result.";
+            status="warn";
           }
   
-          $("#resultContainer").html("<p>" + resultMessage + "</p>");
+          $("#resultContainer").html(`<p class="${status}">${resultMessage} </p>`);
         } else {
           $("#resultContainer").html(
-            "<p>Unexpected response from the server.</p>"
+            `<p class="${status}">Unexpected response from the server.</p>`
           );
         }
   

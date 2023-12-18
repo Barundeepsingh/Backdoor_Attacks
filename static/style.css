@@ -263,3 +263,15 @@
     color: #5f5988;
   }
   
+  #resultContainer p {
+    background: #3de57b;
+    font-weight: 600;
+    color: #5f5988;
+    padding: 22px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .success{background: #3de57b;}
+  .error{background: #f03737; color: white;}
+  .warn{background: #ef841d; color:white;}
