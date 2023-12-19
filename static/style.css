@@ -1,77 +1,87 @@
-
-.heading{
+.heading {
     text-align: center;
     margin: 30px;
-}
-
-
-*{
+  }
+  
+  * {
     margin: 0;
     padding: 0;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     box-sizing: border-box;
-}
-
-.container{
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
     min-height: 100vh;
-    background-image: linear-gradient(rgba(9,0,77,0.65), rgba(9,0,7,0.65)), url(/images/background.png);
+    background-image: linear-gradient(rgba(9, 0, 77, 0.65), rgba(9, 0, 7, 0.65)),
+      url(/images/background.png);
     background-size: cover;
     background-position: center;
     padding: 10px 8%;
-}
-nav{
+    background: linear-gradient(150deg, #39ef74, #4600f1 100%);
+  }
+  nav {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px 0px;
-}
-.logo{
-    width: 350px;
+  }
+  .logo {
+    width: 21.875rem;
     cursor: pointer;
-}
-nav ul{
+    mix-blend-mode: multiply;
+  }
+  nav ul {
     list-style: none;
     width: 100%;
     text-align: right;
     padding-right: 60px;
-}
-nav ul li{
+  }
+  nav ul li {
     display: inline-block;
+    text-transform: uppercase;
     margin: 10px 20px;
-}
-nav ul li a{
+  }
+  nav ul li a {
     color: #fff;
     text-decoration: none;
-}
-.content{
-    margin-top: 14%;
+  }
+  .content {
+    /* margin-top: 14%; */
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
     color: #fff;
     max-width: 620px;
-}
-.content h1{
+  }
+  .content h1 {
     font-size: 70px;
     font-weight: 600;
     line-height: 85px;
     margin-bottom: 25px;
-}
-.content form{
+  }
+  .content form {
     display: flex;
     align-items: center;
     background: #fff;
     border-radius: 5px;
     padding: 10px;
     margin-top: 30px;
-}
-.content form input{
+  }
+  .content form input {
     border: 0;
     outline: 0;
     width: 100%;
     font-size: 16px;
     padding-left: 10px;
-}
-.content form .btn{
+  }
+  .content form .btn {
     display: flex;
     align-items: center;
     padding: 10px 30px;
@@ -83,27 +93,26 @@ nav ul li a{
     font-weight: 500;
     cursor: pointer;
     font-size: 15px;
-
-}
-.form-box{
+  }
+  .form-box {
     width: 90%;
     max-width: 450px;
-    position:absolute;
+    position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     background: #fff;
     padding: 50px 60px 70px;
     text-align: center;
-}
-.form-box h1{
+  }
+  .form-box h1 {
     font-size: 30px;
     margin-bottom: 60px;
     color: #a98fcb;
     position: relative;
-}
-.form-box h1::after{
-    content: '';
+  }
+  .form-box h1::after {
+    content: "";
     width: 30px;
     height: 4px;
     border-radius: 3px;
@@ -112,8 +121,8 @@ nav ul li a{
     bottom: -12px;
     left: 50%;
     transform: translate(-50%);
-}
-.input-field{
+  }
+  .input-field {
     background: #eaeaea;
     margin: 15px 0;
     border-radius: 3px;
@@ -122,32 +131,32 @@ nav ul li a{
     max-height: 65px;
     transition: max-height 0.5s;
     overflow: hidden;
-}
-input{
+  }
+  input {
     width: 100%;
     background: transparent;
     border: 0;
     outline: 0;
     padding: 18px 15px;
-}
-.input-field i{
+  }
+  .input-field i {
     margin-left: 15px;
     color: #999;
-}
-form p{
+  }
+  form p {
     text-align: left;
     font-size: 13px;
-}
-form p a{
+  }
+  form p a {
     text-decoration: none;
     color: #a98fcb;
-}
-.btn-field{
+  }
+  .btn-field {
     width: 100%;
     display: flex;
     justify-content: space-between;
-}
-.btn-field button{
+  }
+  .btn-field button {
     flex-basis: 48%;
     background: #a98fcb;
     color: #fff;
@@ -157,24 +166,112 @@ form p a{
     outline: 0;
     cursor: pointer;
     transition: background 1s;
-}
-.input-group{
+  }
+  .input-group {
     height: 250px;
-}
-.btn-field button.disable{
+  }
+  .btn-field button.disable {
     background: #eaeaea;
     color: #555;
-}
-
-.label{
+  }
+  
+  .label {
     color: #f5168d;
     font-weight: bold;
-}
-.uploadedImage{
+  }
+  .uploadedImage {
     max-width: 100%;
     height: auto;
-}
-.content img {
+  }
+  .content img {
     max-width: 50%;
     height: auto;
   }
+  
+  .form-container {
+    background: white;
+    color: #5f5988;
+    padding: 1.25rem !important;
+    border-radius: 0.75rem !important;
+    text-align: center;
+    display: inline-block !important;
+  }
+  
+  .form-container h1 {
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .form-container p {
+    text-align: center;
+  }
+  
+  .image-upload {
+    border: 1px dashed currentColor;
+    height: 20rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.75rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  
+  .image-upload:hover {
+    background: #5f59880a;
+  }
+  
+  .image-upload #iconImage {
+    width: 6.25rem;
+    filter: invert(38%) sepia(4%) saturate(4196%) hue-rotate(208deg)
+      brightness(91%) contrast(87%);
+  }
+  
+  .image-upload #uploadedImage {
+    max-width: unset;
+    width: 100%;
+    object-fit: cover;
+  }
+  
+  .btn-v2 {
+    cursor: pointer;
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    text-align: center;
+    background-color: #4cb797;
+    color: white;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    font-size: 1rem;
+    /* background: #f5168d; */
+  }
+  
+  #predictionForm {
+    display: none !important;
+  }
+  
+  .login-button {
+    background-color: white;
+    padding: 0.625rem 1.25rem;
+    border-radius: 0.5rem;
+  }
+  
+  .login-button a {
+    color: #5f5988;
+  }
+  
+  #resultContainer p {
+    background: #3de57b;
+    font-weight: 600;
+    color: #5f5988;
+    padding: 22px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .success{background: #3de57b;}
+  .error{background: #f03737; color: white;}
+  .warn{background: #ef841d; color:white;}
