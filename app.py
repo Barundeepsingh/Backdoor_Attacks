@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, send_from_directory
 from flask_cors import CORS  # Import the CORS module
 import tensorflow as tf
 from PIL import Image
@@ -30,9 +30,12 @@ output_details = interpreter.get_output_details()
 def home():
     return render_template('index.html')
 
-# Define a route for prediction
-# ...
+# Define a route for the login page
+@app.route('/login')
+def login():
+    return render_template('login.html')
 
+# Define a route for prediction
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
@@ -73,6 +76,12 @@ def predict():
         return jsonify({'predicted_class': int(predicted_class), 'image_path': image_path, 'raw_output': output_data.tolist()})
     except Exception as e:
         return jsonify({'error': str(e)})
+
+
+# Add a route to serve uploaded images
+@app.route('/uploads/<filename>')
+def uploaded_file(filename):
+    return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
 
 if __name__ == '__main__':

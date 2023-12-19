@@ -1,88 +1,75 @@
 // static/script.js
 function predict() {
-    var formData = new FormData();
-    var fileInput = document.getElementById("imageInput");
-    var file = fileInput.files[0];
-  
-    if (!file) {
+  var formData = new FormData();
+  var fileInput = document.getElementById("imageInput");
+  var file = fileInput.files[0];
+
+  if (!file) {
       alert("Please select an image file.");
       return;
-    }
-  
-    formData.append("image", file);
-  
-    $.ajax({
+  }
+
+  formData.append("image", file);
+
+  $.ajax({
       url: "/predict",
       type: "POST",
       data: formData,
       contentType: false,
       processData: false,
       success: function (response) {
-        let status="error";
-  
-        if (response && response.predicted_class !== undefined) {
-          var resultMessage;
+          let status = "error";
 
-         
-          // Check the predicted class and set the result message accordingly
-          if (response.predicted_class === 0) {
-            resultMessage =
-              "The image is safe and doesn't contain any Backdoor attack.";
+          if (response && response.predicted_class !== undefined) {
+              var resultMessage;
 
-              status="success";
+              // Check the predicted class and set the result message accordingly
+              if (response.predicted_class === 0) {
+                  resultMessage =
+                      "The image is safe and doesn't contain any Backdoor attack.";
 
-          } else if (response.predicted_class === 1) {
-            resultMessage = "This image has Backdoor attack.";
-          } else if (response.predicted_class === 2) {
-            resultMessage = "This image has Backdoor attack.";
-          } else if (response.predicted_class === 3) {
-            resultMessage = "This image has Backdoor attack.";
-          } else if (response.predicted_class === 4) {
-            rresultMessage = "This image has Backdoor attack.";
-          } else if (response.predicted_class === 5) {
-            resultMessage = "This image has Backdoor attack.";
+                  status = "success";
+              } else {
+                  resultMessage = "This image has Backdoor attack.";
+              }
+
+              $("#resultContainer").html(`<p class="${status}">${resultMessage} </p>`);
           } else {
-            resultMessage = "Unexpected prediction result.";
-            status="warn";
+              $("#resultContainer").html(
+                  `<p class="${status}">Unexpected response from the server.</p>`
+              );
           }
-  
-          $("#resultContainer").html(`<p class="${status}">${resultMessage} </p>`);
-        } else {
-          $("#resultContainer").html(
-            `<p class="${status}">Unexpected response from the server.</p>`
-          );
-        }
-  
-        if (response && response.image_path !== undefined) {
-          $("#uploadedImage").attr("src", response.image_path).show();
-        } else {
-          $("#uploadedImage").hide();
-        }
+
+          if (response && response.image_path !== undefined) {
+              // Display the uploaded image
+              $("#uploadedImage").attr("src", response.image_path).show();
+          } else {
+              $("#uploadedImage").hide();
+          }
       },
       error: function (error) {
-        console.log(error);
+          console.log(error);
       },
-    });
-  }
-  
-  /**
-   * file upload trigger
-   */
-  function triggerFileUpload() {
-    $("#imageInput")?.click();
-  }
-  
-  // Handle file input change event
-  $("#imageInput").change(function () {
-    var fileInput = this;
-    if (fileInput.files && fileInput.files[0]) {
+  });
+}
+
+/**
+* file upload trigger
+*/
+function triggerFileUpload() {
+  $("#imageInput")?.click();
+}
+
+// Handle file input change event
+$("#imageInput").change(function () {
+  var fileInput = this;
+  if (fileInput.files && fileInput.files[0]) {
       var reader = new FileReader();
       reader.onload = function (e) {
-        $("#uploadedImage").attr("src", e.target.result);
-        $("#uploadedImage").show();
-        $("#iconImage").hide();
+          $("#uploadedImage").attr("src", e.target.result);
+          $("#uploadedImage").show();
+          $("#iconImage").hide();
       };
       reader.readAsDataURL(fileInput.files[0]);
-    }
-  });
-  
+  }
+});

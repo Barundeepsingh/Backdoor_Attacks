@@ -21,9 +21,8 @@
           class="logo"
         />
         <ul>
-          <li><a href="#">About Us</a></li>
           <li class="login-button">
-            <a href="/templates/login/login.html">Log In/Sign Up</a>
+            <a href="/login">Log In/Sign Up</a>
           </li>
         </ul>
       </nav>
@@ -42,7 +41,7 @@
               id="uploadedImage"
               src="#"
               alt="Uploaded Image"
-              style="display: none"
+              style="display: none; max-width: 100%; height: auto;"
             />
           </div>
 
@@ -57,14 +56,6 @@
             accept="image/*"
             required
           />
-
-          <!-- Form Section -->
-          <!-- <form id="predictionForm" enctype="multipart/form-data">
-                    <label class="label" for="image">Upload Image:</label>
-                    <input type="file" id="imageInput" accept="image/*" required>
-                    <img id="uploadedImage" src="#" alt="Uploaded Image" style="display:none;">
-                    <button type="button" onclick="predict()" class="btn">Predict</button>
-                </form> -->
         </form>
       </div>
     </div>

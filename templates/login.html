@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LogIn/SignUp</title>
+    <title>Sign Up</title>
     <link rel="stylesheet" type="text/css" href="/static/style.css">
     <script src="https://kit.fontawesome.com/11dc4cb70d.js" crossorigin="anonymous"></script>
 </head>
@@ -12,7 +12,7 @@
         <div class="form-box">
             <h1 id="title">Sign Up</h1>
             <form>
-                <div class="input-group">
+                <div class="input-group" id="signupInput">
                     <div class="input-field" id="nameField">
                         <i class="fa-solid fa-user"></i>
                         <input type="text" placeholder="Name">
@@ -27,16 +27,26 @@
                         <i class="fa-solid fa-lock"></i>
                         <input type="password" placeholder="Password">
                     </div>
-                    <p>Forget Password <a href="#">Click Here!</a></p>
-                    </div>
-                    <div class="btn-field">
-                        <button type="button" id="signUpBtn">Sign Up</button>
-                        <button type="button" class="disable" id="signInBtn" >Log In</button>
-                    </div>
+                    <p id="forgetPassword">Forget Password <a href="#">Click Here!</a></p>
+                </div>
+
+                <div class="btn-field">
+                    <button type="button" id="signUpBtn">Sign Up</button>
+                    <button type="button" class="disable" id="signInBtn" >Log In</button>
                 </div>
             </form>
         </div>
     </div>
     <script src="/static/loginScript.js"></script>
+    <script>
+        // Toggle forget password visibility based on the current page
+        document.addEventListener('DOMContentLoaded', function () {
+            var isSignUpPage = window.location.pathname.includes('/signup');
+            var forgetPasswordElement = document.getElementById('forgetPassword');
+            if (forgetPasswordElement) {
+                forgetPasswordElement.style.display = isSignUpPage ? 'block' : 'none';
+            }
+        });
+    </script>
 </body>
 </html>
